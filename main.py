@@ -17,7 +17,7 @@ def main():
         num_numbers = input("How many numbers would you like in your password?\n")
 
         population = ""
-        if int(num_digits) > 0:
+        if int(num_numbers) > 0:
             population += "0123456789"
         if int(num_symbols) > 0:
             population += """
@@ -26,7 +26,8 @@ def main():
         if int(num_letters) > 0:
             population += "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
 
-
+        passwd = random.sample(population, int(num_numbers) + int(num_letters) + int(num_symbols))
+        print(passwd)
 
 
 if __name__ == "__main__":
