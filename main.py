@@ -1,5 +1,6 @@
 import secrets
 import string
+import random
 
 def main():
     print("Welcome to my Password Generator Tool built in Python.")
@@ -10,11 +11,22 @@ def main():
         final_pass = ''.join(secrets.choice(range_of_char) for i in range(int(how_long)))
         print(f"Your password is:\n{final_pass}")
 
-    elif security_measure == 'N':
+    elif security_measure.upper() == 'N':
         num_letters = input("How many letters would you like in your password?\n")
         num_symbols = input("How many symbols would you like in your password?\n")
         num_numbers = input("How many numbers would you like in your password?\n")
 
+        population = ""
+        if int(num_letters) > 0:
+            population += "0123456789"
+        if int(num_symbols) > 0:
+            population += """
+            `~!@#$%^&*()-_+={[;:}]'<>,.?/\|"
+            """
+        if int(num_letters) > 0:
+            population += "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+
+        
         # Store gen. password in array
         passwd = []
 
