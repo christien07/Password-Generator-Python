@@ -20,14 +20,12 @@ def main():
         if int(num_numbers) > 0:
             population += "0123456789"
         if int(num_symbols) > 0:
-            population += """
-            `~!@#$%^&*()-_+={[;:}]'<>,.?/\|"
-            """
+            population += "`~!@#$%^&*()-_+={[;:}]'<>,.?/\|"
         if int(num_letters) > 0:
             population += "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
 
-        passwd = random.sample(population, int(num_numbers) + int(num_letters) + int(num_symbols))
-        print(passwd)
+        passwd = random.sample(population, k=(int(num_numbers) + int(num_letters) + int(num_symbols)))
+        print(f"Your password is:\n" + "".join(passwd))
 
 
 if __name__ == "__main__":
