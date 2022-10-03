@@ -3,6 +3,23 @@ import string
 import random
 
 def main():
+    # D.R.Y.
+    # :)
+    numbers = [
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+    ]
+
+    # Need to include both backslash, \, and quotes, ", implementation may need to change
+    symbols = [
+        "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "{", "[", ";", ":", "}", "]", "'", "<", ">", ",", ".",
+        "?", "/", "\n".strip("n"), "|", '"'
+    ]
+
+    letters = [
+        "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m", 
+        "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"
+    ]
+
     print("Welcome to my Password Generator Tool built in Python.")
     security_measure = input("Does this password need to be reasonably secure? Y or N\n")
     if security_measure.upper() == 'Y':
@@ -18,11 +35,11 @@ def main():
 
         population = ""
         if int(num_numbers) > 0:
-            population += "0123456789"
+            population += "".join(numbers)
         if int(num_symbols) > 0:
-            population += "`~!@#$%^&*()-_+={[;:}]'<>,.?/\|"
+            population += "".join(symbols)
         if int(num_letters) > 0:
-            population += "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+            population += "".join(letters)
 
         passwd = random.sample(population, k=(int(num_numbers) + int(num_letters) + int(num_symbols)))
         print(f"Your password is:\n" + "".join(passwd))
