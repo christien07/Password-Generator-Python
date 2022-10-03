@@ -58,23 +58,24 @@ def main():
             if int(num_symbols) > 0:
                 i = 0
                 while i < int(num_symbols):
-                    password += symbols[rando1]
+                    password += symbols[random.randint(0, 31)]
                     i += 1
                     n += 1
             if int(num_numbers) > 0:
                 j = 0
                 while j < int(num_numbers):
-                    password += numbers[rando2]
+                    password += numbers[random.randint(0, 9)]
                     j += 1
                     n += 1
             if int(num_letters) > 0:
                 k = 0
                 while k < int(num_letters):
-                    password += letters[rando3]
+                    password += letters[random.randint(0, 51)]
                     k += 1
                     n += 1
         
-        print(f"Your generated password is:\n{password}")
+        final_passwd = "".join(random.sample(password, total_len))
+        print(f"Your generated password is:\n{final_passwd}")
 
         """
         passwd = random.sample(population, k=(int(num_numbers) + int(num_letters) + int(num_symbols)))
