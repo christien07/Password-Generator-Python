@@ -33,6 +33,9 @@ def main():
         num_symbols = input("How many symbols would you like in your password?\n")
         num_numbers = input("How many numbers would you like in your password?\n")
 
+        total_len = int(num_letters) + int(num_numbers) + int(num_symbols)
+
+        """
         population = ""
         if int(num_numbers) > 0:
             population += "".join(numbers)
@@ -40,9 +43,43 @@ def main():
             population += "".join(symbols)
         if int(num_letters) > 0:
             population += "".join(letters)
+        """
 
+        # Symbols: There are 32 symbols to choose from
+        rando1 = random.randint(0, 31)
+        # Numbers: There are 10 numbers to choose from
+        rando2 = random.randint(0, 9)
+        # Letters: There are 26*2 == 52 letters, including uppercase and lowercase
+        rando3 = random.randint(0, 51)
+
+        n = 1
+        password = ""
+        while n < total_len:
+            if int(num_symbols) > 0:
+                i = 0
+                while i < int(num_symbols):
+                    password += symbols[rando1]
+                    i += 1
+                    n += 1
+            if int(num_numbers) > 0:
+                j = 0
+                while j < int(num_numbers):
+                    password += numbers[rando2]
+                    j += 1
+                    n += 1
+            if int(num_letters) > 0:
+                k = 0
+                while k < int(num_letters):
+                    password += letters[rando3]
+                    k += 1
+                    n += 1
+        
+        print(f"Your generated password is:\n{password}")
+
+        """
         passwd = random.sample(population, k=(int(num_numbers) + int(num_letters) + int(num_symbols)))
         print(f"Your password is:\n" + "".join(passwd))
+        """
 
 
 if __name__ == "__main__":
